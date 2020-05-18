@@ -1,6 +1,6 @@
 ! Xft Settings
 
-Xft.dpi: 96
+Xft.dpi: 144
 Xft.antialias: 1
 Xft.hinting: 1
 Xft.hintstyle: hintfull
@@ -17,7 +17,7 @@ URxvt.iso14755: false
 URxvt.lineSpace: 0
 URxvt.letterSpace: -1
 
-URxvt.font: xft:monospace:pixelsize=16
+URxvt.font: xft:monospace:pixelsize=24
 
 ! URxvt Extensions
 
