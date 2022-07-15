@@ -1,17 +1,25 @@
 # If not running interactively, don't do anything
-case $- in
-  *i*) ;;
-  *) return;;
-esac
+[ -z "$PS1" ] && return
+
+## substituted by the previous line 
+#case $- in
+#  *i*) ;;
+#  *) return;;
+#esac
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-HISTCONTROL=ignorespace
+export HISTCONTROL=ignoredups   # don't store duplicated commands
+export HISTCONTROL=ignoreboth
 
+# shell history is useful, let's have more of it
+export HISTTIMEFORMAT="%F %T "
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=-1
-HISTFILESIZE=-1
-
+# shell history is useful, let's have more of it
+export HISTFILESIZE=-1
+export HISTSIZE=-1
+export HISTCONTROL=ignoredups   # don't store duplicated commands
+shopt -s histappend   # don't overwrite history file after each session
 # append to the history file, don't overwrite it
 shopt -s histappend
 
@@ -39,9 +47,11 @@ fi
 # Source git-prompt.
 [ -f /usr/share/git/git-prompt.sh ] && . /usr/share/git/git-prompt.sh
 GIT_PS1_SHOWDIRTYSTATE=true
+GIT_PS1_DESCRIBE_STYLE="branch"
+GIT_PS1_SHOWUPSTREAM="verbose git"
 
 if [ "$color_prompt" = yes ]; then
-  PS1="\[\033[34m\][\t] \[\033[31m\]\h \[\033[32m\]\w\[\033[34m\]\$(__git_ps1 '(%s)')\[$(tput sgr0)\] "
+  PS1="\[\033[94m\][\t] \[\033[96m\]\h \[\033[95m\]\w\[\033[94m\] \$(__git_ps1 '(%s)')\n$ \[$(tput sgr0)\] "
 else
   PS1="[\t] \h \w\$(__git_ps1 '(%s)')\[$(tput sgr0)\] "
 fi
@@ -89,3 +99,11 @@ fi
 # Source fzf keybindings and completion features.
 [ -f /usr/share/fzf/key-bindings.bash ] && . /usr/share/fzf/key-bindings.bash
 [ -f /usr/share/fzf/completion.bash ] && . /usr/share/fzf/completion.bash
+
+
+# we don't want "command not found" errors when __git_ps1 is not installed
+type __git_ps1 &>/dev/null || function __git_ps1 () { true; }
+
+eval `keychain --eval id_rsa --eval id_ed25519`
+export EDITOR='vim'
+source $HOME/smart-bash-history/01-main-settings.sh
