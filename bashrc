@@ -56,7 +56,7 @@ fi
 
 # Check if root
 if [ "$EUID" -eq 0 ]; then
-  PS1="\[\033[94m\][\t] \[\033[35m\]\u@\h \[\033[95m\]\w\[\033[94m\] \$(__git_ps1 '(%s)')\n"
+  PS1="\[\033[94m\][\t] \[\033[01;31m\]\u@\h \[\033[95m\]\w\[\033[94m\] \$(__git_ps1 '(%s)')\n"
   PS1="$PS1#\[$(tput sgr0)\] "
 else
   PS1="$PS1$\[$(tput sgr0)\] "
