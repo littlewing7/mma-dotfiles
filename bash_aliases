@@ -38,7 +38,7 @@ alias tm="ps -ef | a"  # Process search
 alias get="curl -O -L" # Get something via cURL
 
 # Vim
-alias vim="nvim"
+#alias vim="nvim"
 alias vi="vim"
 alias v="vim"
 
