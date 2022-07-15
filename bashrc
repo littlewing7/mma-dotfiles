@@ -50,17 +50,17 @@ GIT_PS1_SHOWUPSTREAM="verbose git"
 
 if [ "$color_prompt" = yes ]; then
   PS1="\[\033[94m\][\t] \[\033[96m\]\u@\h \[\033[95m\]\w\[\033[94m\] \$(__git_ps1 '(%s)')\n"
-  if [ "$EUID" -eq 0 ]; then
-    PS1="$PS1#\[$(tput sgr0)\] "
-  else
-    PS1="$PS1$\[$(tput sgr0)\] "
-  fi
-fi
-
-  PS1="$PS1$\[$(tput sgr0)\] "
 else
   PS1="[\t] \h \w\$(__git_ps1 '(%s)')\[$(tput sgr0)\] "
 fi
+
+# Check if root
+if [ "$EUID" -eq 0 ]; then
+    PS1="$PS1#\[$(tput sgr0)\] "
+else
+    PS1="$PS1$\[$(tput sgr0)\] "
+fi
+
 unset color_prompt
 
 # If this is an xterm set the title to user@host:dir
