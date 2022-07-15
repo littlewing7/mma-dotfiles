@@ -10,6 +10,9 @@ xsetroot -solid black
 # Launch a session bus instance
 eval "$(dbus-launch --sh-syntax --exit-with-session)"
 
+# set kayboard to it
+exec setxkbmap it &
+
 # Custom keybindings
 xbindkeys &
 

@@ -18,7 +18,6 @@ export HISTTIMEFORMAT="%F %T "
 # shell history is useful, let's have more of it
 export HISTFILESIZE=-1
 export HISTSIZE=-1
-export HISTCONTROL=ignoredups   # don't store duplicated commands
 shopt -s histappend   # don't overwrite history file after each session
 
 # check the window size after each command and, if necessary,
