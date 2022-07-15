@@ -9,7 +9,7 @@
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-export HISTCONTROL=ignoredups   # don't store duplicated commands
+#export HISTCONTROL=ignoredups   # don't store duplicated commands
 export HISTCONTROL=ignoreboth
 
 # shell history is useful, let's have more of it
@@ -20,8 +20,6 @@ export HISTFILESIZE=-1
 export HISTSIZE=-1
 export HISTCONTROL=ignoredups   # don't store duplicated commands
 shopt -s histappend   # don't overwrite history file after each session
-# append to the history file, don't overwrite it
-shopt -s histappend
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -51,7 +49,15 @@ GIT_PS1_DESCRIBE_STYLE="branch"
 GIT_PS1_SHOWUPSTREAM="verbose git"
 
 if [ "$color_prompt" = yes ]; then
-  PS1="\[\033[94m\][\t] \[\033[96m\]\h \[\033[95m\]\w\[\033[94m\] \$(__git_ps1 '(%s)')\n$ \[$(tput sgr0)\] "
+  PS1="\[\033[94m\][\t] \[\033[96m\]\u@\h \[\033[95m\]\w\[\033[94m\] \$(__git_ps1 '(%s)')\n"
+  if [ "$EUID" -eq 0 ]; then
+    PS1="$PS1#\[$(tput sgr0)\] "
+  else
+    PS1="$PS1$\[$(tput sgr0)\] "
+  fi
+fi
+
+  PS1="$PS1$\[$(tput sgr0)\] "
 else
   PS1="[\t] \h \w\$(__git_ps1 '(%s)')\[$(tput sgr0)\] "
 fi
