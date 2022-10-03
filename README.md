@@ -23,7 +23,7 @@ entails!
 
 ```
 $ mkdir -p ~/workspace
-$ git clone --recurse-submodules https://github.com/danguita/dotfiles.git ~/workspace/dotfiles
+$ git clone --recurse-submodules https://github.com/littlewing7/dotfiles.git ~/workspace/dotfiles
 $ make -C ~/workspace/dotfiles install
 ```
 
