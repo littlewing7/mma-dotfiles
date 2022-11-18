@@ -48,14 +48,14 @@ GIT_PS1_DESCRIBE_STYLE="branch"
 GIT_PS1_SHOWUPSTREAM="verbose git"
 
 if [ "$color_prompt" = yes ]; then
-  PS1="\[\033[94m\][\t] \[\033[96m\]\u@\h \[\033[95m\]\w\[\033[94m\] \$(__git_ps1 '(%s)')\n"
+  PS1="\[\033[94m\][\d \t] \[\033[96m\]\u@\h \[\033[95m\]\w\[\033[94m\] \$(__git_ps1 '(%s)')\n"
 else
   PS1="[\t] \h \w\$(__git_ps1 '(%s)')\[$(tput sgr0)\] "
 fi
 
 # Check if root
 if [ "$EUID" -eq 0 ]; then
-  PS1="\[\033[94m\][\t] \[\033[01;31m\]\u@\h \[\033[95m\]\w\[\033[94m\] \$(__git_ps1 '(%s)')\n"
+  PS1="\[\033[94m\][\d \t] \[\033[01;31m\]\u@\h \[\033[95m\]\w\[\033[94m\] \$(__git_ps1 '(%s)')\n"
   PS1="$PS1#\[$(tput sgr0)\] "
 else
   PS1="$PS1$\[$(tput sgr0)\] "
