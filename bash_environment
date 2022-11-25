@@ -1,3 +1,12 @@
+
+# default settings for less. You may also want to disable line wrapping with -S
+export LESS='-MRi#8j.5 --use-color'
+# #             |||| `- center on search matches
+# #             |||`--- scroll horizontally 8 columns at a time
+# #             ||`---- case-insensitive search unless pattern contains uppercase
+# #             |`----- parse color codes
+# #             `------ show more information in prompt
+
 # term
 export TERM="screen-256color"
 
