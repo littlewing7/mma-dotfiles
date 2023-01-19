@@ -107,7 +107,7 @@ fi
 [ -f /usr/share/fzf/completion.bash ] && . /usr/share/fzf/completion.bash
 # Source fzf keybindings features DEBIAN PATH.
 [ -f /usr/share/doc/fzf/examples/key-bindings.bash ] && . /usr/share/doc/fzf/examples/key-bindings.bash
-
+##
 
 # we don't want "command not found" errors when __git_ps1 is not installed
 type __git_ps1 &>/dev/null || function __git_ps1 () { true; }
